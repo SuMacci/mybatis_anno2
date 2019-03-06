@@ -1,0 +1,12 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="anno_test.maps.TestMappable">
+	<cache />
+
+    <select id="selectTest" resultType="map">SELECT * FROM xml_test ORDER BY xml_num ASC</select>
+	<insert id="insertTest">INSERT INTO xml_test VALUES (SEQ_xml_num.NEXTVAL, #{xml_name}, #{xml_title}, default)</insert>
+	<update id="updateTest">UPDATE xml_test SET xml_title= #{xml_title} WHERE XML_NUM = #{xml_num}</update>
+	<delete id="deleteTest">DELETE XML_TEST WHERE XML_NAME = #{xml_name}</delete>
+	<select id="selectWhereTest" resultType="map">SELECT * FROM xml_test WHERE xml_num > #{xml_num}</select>
+	<insert id="proinserttest" statementType="CALLABLE">{CALL SHC_TESTCODING(#{shc_title, mode=IN, jdbcType=VARCHAR}, #{shc_name, mode=IN, jdbcType=VARCHAR}, #{shc_main, mode=IN, jdbcType=VARCHAR}}</insert>
+	<select id="proselecttest" resultType="map">SELECT * FROM shc_coding ORDER BY shc_num DESC</select>
+</mapper>
